@@ -1,0 +1,52 @@
+interface types {
+    use jabratech:common/types.{user};
+
+    record instruments-response{
+        code: s16,
+        message: string,
+        data: list<instrument>
+    }
+
+    record instrument{
+        id: s64,
+        status: string,
+        user-created: option<user>,
+        date-created: option<string>,
+        user-updated: option<user>,
+        date-updated: option<string>,
+        instrument-name: string,
+        opening-spot: option<f64>,
+        expiry-spot: f64,
+    }
+
+    record instrument-create-request{
+        status: string,
+        instrument-name: string,
+        opening-spot: option<f64>,
+        expiry-spot: f64,
+    }
+
+    record create-request{
+        user-email: string,
+        instruments: list<instrument-create-request>
+    }
+
+    record instrument-update-request{
+        id: option<s64>,
+        status: string,
+        instrument-name: option<string>,
+        opening-spot: option<f64>,
+        expiry-spot: f64,
+    }
+
+    record update-request{
+        user-email: string,
+        instruments: list<instrument-update-request>
+    }
+
+    record delete-request{
+        user-email: string,
+        id: option<list<s64>>,
+        instrument-name: option<list<string>>,
+    }
+}

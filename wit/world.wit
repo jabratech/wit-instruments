@@ -1,0 +1,5 @@
+package jabratech:instruments-common;
+
+world instruments-common {
+    export instruments-handler;
+}
